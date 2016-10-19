@@ -1,12 +1,18 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using NUnit.Framework;
 
 /// <summary>
-/// Step 4 - Dependency Inversion Principle
+/// Step 5 - Decouple tests
 /// 
-/// - Identify that the Samurai still has a hard dependency on a Sword despite the Weapon abstraction
-/// - Remove the responsibility of new'ing the Sword dependency from the Samurai and make it injectable from the constructor
+/// - Identify that the SamuraiTest still tests both the Samurai and the Sword
+/// - Use a mock to not couple the SamuraiTest to a concrete Weapon
+/// - Notice that we now can configure and verify behavior done on the Weapon dependency which are local to the test
+/// 
+/// Notes:
+/// - See Tests.MockVsStub for discussion about mocks and stubs
+/// - The Tests class should be splitted into seperate classes (SamuraiTests, SwordTests, etc.)
 /// </summary>
-namespace Netcompany.Courses.TPS.Step4
+namespace Netcompany.Courses.TPS.Step5
 {
     public class Samurai
     {
@@ -43,14 +49,17 @@ namespace Netcompany.Courses.TPS.Step4
         public void SamuraiTest()
         {
             // Arrange
-            var sword = new Sword();
-            var samurai = new Samurai(sword);
+            var weaponMock = new Mock<IWeapon>(MockBehavior.Strict);
+            weaponMock.Setup(x => x.Hit("an object")).Returns("Done something on an object");
+            var weapon = weaponMock.Object;
+            var samurai = new Samurai(weapon);
 
             // Act
-            string result = samurai.Attack("pig");
+            string result = samurai.Attack("an object");
 
             // Assert
-            Assert.AreEqual("Chopped pig in half!", result);
+            Assert.AreEqual("Done something on an object", result);
+            weaponMock.Verify(x => x.Hit("an object"), Times.Once);
         }
 
         [Test]

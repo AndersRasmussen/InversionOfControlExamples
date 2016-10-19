@@ -1,4 +1,4 @@
-﻿using Netcompany.Courses.TPS.Step5;
+﻿using Netcompany.Courses.TPS.Step6;
 using NUnit.Framework;
 
 namespace Netcompany.Courses.TPS.Homemade

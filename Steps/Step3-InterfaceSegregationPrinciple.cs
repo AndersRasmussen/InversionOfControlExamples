@@ -1,5 +1,12 @@
 ﻿using NUnit.Framework;
 
+/// <summary>
+/// Step 3 - Interface Segregation Principle
+/// 
+/// - Identify that a Samurai has a concrete dependency on the Sword
+/// - Abstract the Sword into a Weapon
+/// - Change the Samurai to use the abstraction
+/// </summary>
 namespace Netcompany.Courses.TPS.Step3
 {
     public class Samurai
@@ -21,7 +28,7 @@ namespace Netcompany.Courses.TPS.Step3
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);            
+            return string.Format("Chopped {0} in half!", target);
         }
     }
 
@@ -36,6 +43,19 @@ namespace Netcompany.Courses.TPS.Step3
 
             // Act
             string result = samurai.Attack("pig");
+
+            // Assert
+            Assert.AreEqual("Chopped pig in half!", result);
+        }
+
+        [Test]
+        public void SwordTest()
+        {
+            // Arrange
+            var sword = new Sword();
+
+            // Act
+            var result = sword.Hit("pig");
 
             // Assert
             Assert.AreEqual("Chopped pig in half!", result);

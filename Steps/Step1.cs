@@ -1,5 +1,10 @@
 ﻿using NUnit.Framework;
 
+/// <summary>
+/// Step 1
+/// 
+/// Initial example
+/// </summary>
 namespace Netcompany.Courses.TPS.Step1
 {
     public class Samurai
