@@ -1,16 +1,16 @@
 ﻿using NUnit.Framework;
 
-/// <summary>
-/// Step 4 - Dependency Inversion Principle
-/// 
-/// - Identify that the Samurai still has a hard dependency on a Sword despite the Weapon abstraction
-/// - Remove the responsibility of new'ing the Sword dependency from the Samurai and make it injectable from the constructor
-/// </summary>
 namespace Netcompany.Courses.TPS.Step4
 {
+    /// <summary>
+    /// Step 4 - Dependency Inversion Principle
+    /// 
+    /// - Identify that the Samurai still has a hard dependency on a Sword despite the Weapon abstraction
+    /// - Remove the responsibility of new'ing the Sword dependency from the Samurai and make it injectable from the constructor
+    /// </summary>
     public class Samurai
     {
-        private IWeapon _weapon;
+        private readonly IWeapon _weapon;
 
         public Samurai(IWeapon weapon)
         {
@@ -32,7 +32,7 @@ namespace Netcompany.Courses.TPS.Step4
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 

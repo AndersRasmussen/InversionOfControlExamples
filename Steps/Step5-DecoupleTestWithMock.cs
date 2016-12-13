@@ -1,22 +1,22 @@
 ﻿using Moq;
 using NUnit.Framework;
 
-/// <summary>
-/// Step 5 - Decouple tests
-/// 
-/// - Identify that the SamuraiTest still tests both the Samurai and the Sword
-/// - Use a mock to not couple the SamuraiTest to a concrete Weapon
-/// - Notice that we now can configure and verify behavior done on the Weapon dependency which are local to the test
-/// 
-/// Notes:
-/// - See Tests.MockVsStub for discussion about mocks and stubs
-/// - The Tests class should be splitted into seperate classes (SamuraiTests, SwordTests, etc.)
-/// </summary>
 namespace Netcompany.Courses.TPS.Step5
 {
+    /// <summary>
+    /// Step 5 - Decouple tests
+    /// 
+    /// - Identify that the SamuraiTest still tests both the Samurai and the Sword
+    /// - Use a mock to not couple the SamuraiTest to a concrete Weapon
+    /// - Notice that we now can configure and verify behavior done on the Weapon dependency which are local to the test
+    /// 
+    /// Notes:
+    /// - See Tests.MockVsStub for discussion about mocks and stubs
+    /// - The Tests class should be splitted into seperate classes (SamuraiTests, SwordTests, etc.)
+    /// </summary>
     public class Samurai
     {
-        private IWeapon _weapon;
+        private readonly IWeapon _weapon;
 
         public Samurai(IWeapon weapon)
         {
@@ -38,7 +38,7 @@ namespace Netcompany.Courses.TPS.Step5
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 

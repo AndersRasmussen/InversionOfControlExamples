@@ -2,15 +2,15 @@
 using Netcompany.Courses.TPS.Step4;
 using NUnit.Framework;
 
-/// <summary>
-/// Mocks vs Stubs
-/// 
-/// - Mocks have dependency configuration specificed more local to the test
-/// - Stubs are easier shared, but can be hard to maintain when mutiple tests uses the same stub
-/// - Mocks support verification of called methods/properties
-/// </summary>
 namespace Netcompany.Courses.TPS.Steps.MockVsStub
 {
+    /// <summary>
+    /// Mocks vs Stubs
+    /// 
+    /// - Mocks have dependency configuration specificed more local to the test
+    /// - Stubs are easier shared, but can be hard to maintain when mutiple tests uses the same stub
+    /// - Mocks support verification of called methods/properties
+    /// </summary>
     [TestFixture]
     public class Tests
     {
@@ -35,7 +35,6 @@ namespace Netcompany.Courses.TPS.Steps.MockVsStub
         public void SamuraiTestUsingStub()
         {
             // Arrange
-
             var weapon = new WeaponStub();
             var samurai = new Samurai(weapon);
 
@@ -50,7 +49,7 @@ namespace Netcompany.Courses.TPS.Steps.MockVsStub
         {
             public string Hit(string target)
             {
-                return string.Format("Done something on {0}", target);
+                return $"Done something on {target}";
             }
         }
     }

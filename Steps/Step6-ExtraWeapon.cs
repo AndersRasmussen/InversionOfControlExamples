@@ -1,16 +1,16 @@
 ﻿using Moq;
 using NUnit.Framework;
 
-/// <summary>
-/// Step 6
-/// 
-/// - Easily add new weapons and test the functionality in isolation
-/// </summary>
 namespace Netcompany.Courses.TPS.Step6
 {
+    /// <summary>
+    /// Step 6
+    /// 
+    /// - Easily add new weapons and test the functionality in isolation
+    /// </summary>
     public class Samurai
     {
-        private IWeapon _weapon;
+        private readonly IWeapon _weapon;
 
         public Samurai(IWeapon weapon)
         {
@@ -32,7 +32,7 @@ namespace Netcompany.Courses.TPS.Step6
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 
@@ -40,7 +40,7 @@ namespace Netcompany.Courses.TPS.Step6
     {
         public string Hit(string target)
         {
-            return string.Format("Sliced {0} in pieces!", target);
+            return $"Sliced {target} in pieces!";
         }
     }
 
@@ -48,7 +48,7 @@ namespace Netcompany.Courses.TPS.Step6
     {
         public string Hit(string target)
         {
-            return string.Format("Disabled {0} temporary!", target);
+            return $"Disabled {target} temporary!";
         }
     }
 
@@ -56,7 +56,7 @@ namespace Netcompany.Courses.TPS.Step6
     {
         public string Hit(string target)
         {
-            return string.Format("Kills {0} instantly!", target);
+            return $"Kills {target} instantly!";
         }
     }
 

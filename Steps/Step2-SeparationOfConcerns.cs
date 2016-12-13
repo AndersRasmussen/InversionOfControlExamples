@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
 
-/// <summary>
-/// Step 2 - Seperation of Concerns
-/// 
-/// - Identify that it isn't the Samurai which chops thing in half, it is the a Sword
-/// - Seperate the responsibilities up into two classes
-/// - Adds a new SwordTest which tests the sword in isolation
-/// </summary>
 namespace Netcompany.Courses.TPS.Step2
 {
+    /// <summary>
+    /// Step 2 - Seperation of Concerns
+    /// 
+    /// - Identify that it isn't the Samurai which chops thing in half, it is the a Sword
+    /// - Seperate the responsibilities up into two classes
+    /// - Adds a new SwordTest which tests the sword in isolation
+    /// </summary>
     public class Samurai
     {
         public string Attack(string target)
@@ -22,7 +22,7 @@ namespace Netcompany.Courses.TPS.Step2
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 

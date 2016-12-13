@@ -1,17 +1,17 @@
 ﻿using NUnit.Framework;
 
-/// <summary>
-/// Step 3 - Interface Segregation Principle
-/// 
-/// - Identify that a Samurai has a concrete dependency on the Sword
-/// - Abstract the Sword into a Weapon
-/// - Change the Samurai to use the abstraction
-/// </summary>
 namespace Netcompany.Courses.TPS.Step3
 {
+    /// <summary>
+    /// Step 3 - Interface Segregation Principle
+    /// 
+    /// - Identify that a Samurai has a concrete dependency on the Sword
+    /// - Abstract the Sword into a Weapon
+    /// - Change the Samurai to use the abstraction
+    /// </summary>
     public class Samurai
     {
-        private IWeapon _weapon = new Sword();
+        private readonly IWeapon _weapon = new Sword();
 
         public string Attack(string target)
         {
@@ -28,7 +28,7 @@ namespace Netcompany.Courses.TPS.Step3
     {
         public string Hit(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 

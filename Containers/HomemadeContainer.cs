@@ -5,18 +5,29 @@ using System.Reflection;
 
 namespace Netcompany.Courses.TPS.Homemade
 {
+    /// <summary>
+    /// Sample homemade container
+    /// 
+    /// This implements a simple container, which only supports constructor injection.
+    /// 
+    /// This is only for demo purposes and should not be used in a production system.
+    /// 
+    /// Missing (but explicitly avoided) features:
+    /// - Error handling
+    /// - Cycle detection in dependencies
+    /// </summary>
     public class HomemadeContainer
     {
-        private IDictionary<Type, Type> mapping = new Dictionary<Type, Type>();
+        private readonly IDictionary<Type, Type> _mapping = new Dictionary<Type, Type>();
 
         public void Register<TService, TImplementation>()
         {
-            mapping.Add(typeof(TService), typeof(TImplementation));
+            _mapping.Add(typeof(TService), typeof(TImplementation));
         }
 
         public void Register<TImplementation>()
         {
-            mapping.Add(typeof(TImplementation), typeof(TImplementation));
+            _mapping.Add(typeof(TImplementation), typeof(TImplementation));
         }
 
         public T Resolve<T>()
@@ -27,7 +38,7 @@ namespace Netcompany.Courses.TPS.Homemade
         private object Resolve(Type t)
         {
             // Find the concrete type
-            var type = mapping[t];
+            var type = _mapping[t];
 
             // Get the best matching constructor
             var constructor = GetBestMatchingConstuctor(type);
@@ -55,7 +66,7 @@ namespace Netcompany.Courses.TPS.Homemade
 
         private bool CanResolve(Type t)
         {
-            return mapping.ContainsKey(t);
+            return _mapping.ContainsKey(t);
         }
     }
 }

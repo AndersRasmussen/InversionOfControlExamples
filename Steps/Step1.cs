@@ -1,17 +1,17 @@
 ﻿using NUnit.Framework;
 
-/// <summary>
-/// Step 1
-/// 
-/// Initial example
-/// </summary>
 namespace Netcompany.Courses.TPS.Step1
 {
+    /// <summary>
+    /// Step 1
+    /// 
+    /// Initial example
+    /// </summary>
     public class Samurai
     {
         public string Attack(string target)
         {
-            return string.Format("Chopped {0} in half!", target);
+            return $"Chopped {target} in half!";
         }
     }
 
